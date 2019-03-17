@@ -1,0 +1,22 @@
+{
+  "name": "Mansour-Share",
+  "version": "1.0.0",
+  "description": "A web server that helps a family in everyday tasks",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "keywords": [],
+  "author": "Seif Mansour",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-formidable": "^1.2.0",
+    "express-handlebars": "^3.0.2",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}

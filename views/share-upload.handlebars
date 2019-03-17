@@ -1,0 +1,21 @@
+<div class="card bg-light">
+  <h1 class="card-header display-4">Upload</h1>
+  <p class="card-body">You can upload a file through this page. Just select it, and it will be saved in the storage. Once uploaded, everyone on this network will be able to view and download this file.</p>
+</div>
+
+<hr class="mt-4">
+
+<form class="" action="/api/files" method="post" class="form-inline" enctype="multipart/form-data">
+  <div class="form-group text-center">
+    <div class="row">
+      <span class="btn btn-outline-primary btn-file col-3 offset-3">
+        <p class="m-0 status">Browse</p> <input type="file" name="filetoupload">
+      </span>
+      <button type="submit" class="btn btn-secondary subbtn col-3 ml-1" disabled>Upload</button>
+    </div>
+  </div>
+</form>
+
+<hr class="mt-4">
+
+<a href="/share/download" class="btn btn-light">Want to download instead?</a>
