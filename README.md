@@ -43,7 +43,7 @@ ___
 Must have [Node.js](https://nodejs.org/en/), download it first then follow the steps.
 
 1. Download/clone the repository
-  * If you have [Git](https://git-scm.com/) installed, simple go to a folder and type `git clone LINKHERE` in the terminal.
+  * If you have [Git](https://git-scm.com/) installed, simple go to a folder and type `git clone https://github.com/GamesProSeif/family-helper.git` in the terminal.
   * Else download the repository as a zip and unzip it.
 2. Open your terminal
 3. Navigate to the repository folder on your PC
