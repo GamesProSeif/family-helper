@@ -50,7 +50,7 @@ Must have [Node.js](https://nodejs.org/en/), download it first then follow the s
 4. Type `npm install` to install all required dependencies.
 5. Type `npm start` to start the web server. A link will be logged to the console to connect to the web server. If it fails to do so, type `ipconfig` in the terminal, and use your IPv4 address following the port number. EG `192.168.x.xx:PORT`.
 
-> Default port is `80` which is a known port for web servers, that lets you connect to the server by just mentioning the port (192.168.x.xx).
+> Default port is `80` which is a known port for web servers, that lets you connect to the server by just mentioning the ip (192.168.x.xx).
 
 
 &nbsp;
