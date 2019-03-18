@@ -1,7 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
-const favicon = require('serve-favicon');
 const os = require('os');
 const http = require('http');
 const fs = require('fs');
