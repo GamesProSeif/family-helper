@@ -14,7 +14,7 @@ router.post('/', (req, res) => {
     try {
       let storageFound = await fs.existsSync(path.join(__dirname, '..', '..', 'storage/'));
       if (!storageFound) {
-        await fs.mkdirSync(path.join(__dirname, 'storage/'));
+        await fs.mkdirSync(path.join(__dirname, '..', '..', 'storage/'));
       }
       let oldpath = req.files.filetoupload.path;
       let newpath = path.join(__dirname, '..', '..', 'storage', req.files.filetoupload.name);

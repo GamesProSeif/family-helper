@@ -11,11 +11,20 @@ router.get('/', (req, res) => {
 });
 
 router.get('/download', (req, res) => {
-  res.status(200).render('share-download', {
-    page: 'Download',
-    download: true,
-    files: fs.readdirSync(path.join(__dirname, '..', '..', 'storage/'))
-  });
+  async function f() {
+    try {
+      let storageFound = await fs.existsSync(path.join(__dirname, '..', '..', 'storage/'));
+      let files = storageFound ? fs.readdirSync(path.join(__dirname, '..', '..', 'storage/')) : [];
+      res.status(200).render('share-download', {
+        page: 'Download',
+        download: true,
+        files
+      });
+    } catch(e) {
+      console.log(e);
+    }
+  }
+  f();
 });
 
 router.get('/upload', (req, res) => {
