@@ -1,0 +1,26 @@
+<%- include('../util/header'); -%>
+<div class="card bg-light">
+  <h1 class="card-header display-4">Download</h1>
+  <p class="card-body">All files in storage will appear here. Reload this page when someone uploads a file. <% if (files) { %>
+    <br>Click on any file to download it.
+  <% } %></p>
+</div>
+
+<hr class="mt-4">
+<% if (files) { %>
+  <h4 class="mt-4">Files</h4>
+<% } %>
+<ul class="list-group mt-4">
+  <% if (files) { %>
+    <% files.forEach(function(file) { %>
+      <a class="list-group-item" href="/api/files/<%= file %>" download><%= file %></a>
+    <% }); %>
+  <% } else { %>
+  <span class="alert alert-danger">No files in storage.<br>Try refreshing the page.</span>
+  <% } %>
+</ul>
+
+<hr class="mt-4">
+
+<a href="/share/upload" class="btn btn-light">Want to upload instead?</a>
+<%- include('../util/footer'); -%>

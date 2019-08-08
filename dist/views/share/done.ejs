@@ -1,9 +1,12 @@
+<%- include('../util/header'); -%>
 <div class="alert alert-success">
   <h1 class="display-4 alert-heading">Success</h4>
-  <p>Your file "<code>{{{file}}}</code>" was uploaded successfully to the storage.</p>
+  <p>Your file "<code><%= file %></code>" was uploaded successfully to the storage.</p>
   <hr>
   <div class="btn-group" role="group" aria-label="Nav">
     <a href="/share/download" class="btn btn-outline-success">Go to downloads</a>
     <a href="/share/upload" class="btn btn-outline-primary">Upload another file</a>
   </div>
 </div>
+<%- include('../util/footer'); -%>
+  

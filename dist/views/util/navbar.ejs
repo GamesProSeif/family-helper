@@ -1,0 +1,27 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-4">
+  <div class="container">
+    <a href="/share" class="navbar-brand">Mansour Share</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="navbar-item">
+          <a href="/share" class="nav-link <% if (page === 'Home') { %>
+            active
+          <% } %>">Home</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/share/download" class="nav-link <% if (page === 'Download') { %>
+            active
+          <% } %>">Download</a>
+        </li>
+        <li class="navbar-item <% if (page === 'Upload') { %>
+          active
+        <% } %>">
+          <a href="/share/upload" class="nav-link">Upload</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
