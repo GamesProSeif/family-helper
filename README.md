@@ -53,7 +53,7 @@ Must have [Node.js](https://nodejs.org/en/), download it first then follow the s
 
 ---
 
-### TODO list
+### To Do list
 
 - General
   - User authentication
