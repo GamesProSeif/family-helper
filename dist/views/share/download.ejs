@@ -14,7 +14,7 @@
 <ul class="list-group mt-4">
   <% if (files[0]) { %>
     <% files.forEach(function(file) { %>
-      <a class="list-group-item" href="/api/files/<%= file %>" download><%= file %></a>
+      <div class="list-group-item"><a href="/api/files/<%= file %>" download><%= file %> </a> <button onclick='window.location.href="/share/delete?file=<%= file %>/";' class="btn btn-danger" style="width: wrap-content; float: right; text-align: right;">Delete</button></div>
     <% }); %>
   <% } else { %>
     <span class="alert alert-danger mt-3">No files in storage.<br>Try refreshing the page.</span>
