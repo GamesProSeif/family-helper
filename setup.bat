@@ -1,4 +1,7 @@
 @echo off
+echo Installing packages...
+call npm install
+echo finished installing packages
 echo Building files...
 call npm run postinstall
 cd dist
