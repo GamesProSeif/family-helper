@@ -1,6 +1,14 @@
 # Family Helper
 
-### Description
+## Table of Contents
+
+1. [Description](#description)
+1. [Packages](#packages)
+1. [Frameworks](#frameworks)
+1. [Installation](#installation)
+1. [To Do List](#to-do-list)
+
+## Description
 
 A simple [Node.js](https://nodejs.org/en/) [Express](https://www.npmjs.com/package/express) web server project for helping a family in everyday tasks.
 
@@ -12,7 +20,7 @@ Please pull request any feature you want to add/fix/remove. Highly appreciated.
 
 ---
 
-### Packages
+## Packages
 
 - Dependencies
 
@@ -21,11 +29,16 @@ Please pull request any feature you want to add/fix/remove. Highly appreciated.
   - [ejs](https://www.npmjs.com/package/ejs) - For EJS support (injecting data into client side).
 
 - DevDependencies
+  - [@types/\*](https://www.npmjs.com/~types) - For typescript type checking
   - [nodemon](https://www.npmjs.com/package/nodemon) - For resetting the server automatically during development.
+  - [prettier](https://www.npmjs.com/package/prettier) - A beautifier
+  - [typescript](https://www.npmjs.com/package/typescript) - The builder for typescript files
+  - [tslint](https://www.npmjs.com/package/tslint) - The linter for the project
+  - [tslint-config-prettier](https://www.npmjs.com/package/tslint-config-prettier) - Linking prettier with the linter
 
 ---
 
-### Frameworks
+## Frameworks
 
 - [Bootstrap](https://getbootstrap.com/) - For the styling/responsiveness of the website.
 - [Popper.js](https://popper.js.org/) - A Bootstrap dependency needed for closing some alerts.
@@ -33,7 +46,7 @@ Please pull request any feature you want to add/fix/remove. Highly appreciated.
 
 ---
 
-### Installation
+## Installation
 
 Must have [Node.js](https://nodejs.org/en/), download it first then follow the steps.
 
@@ -42,10 +55,8 @@ Must have [Node.js](https://nodejs.org/en/), download it first then follow the s
 - If you have [Git](https://git-scm.com/) installed, simple go to a folder and type `git clone https://github.com/GamesProSeif/family-helper.git` in the terminal.
 - Else download the repository as a zip and unzip it.
 
-2. Open your terminal
-3. Navigate to the repository folder on your PC
-4. Type `npm install` to install all required dependencies.
-5. Type `npm start` to start the web server. A link will be logged to the console to connect to the web server. If it fails to do so, type `ipconfig` in the terminal, and use your IPv4 address following the port number. EG `192.168.x.x:PORT`.
+2. Open the file `setup.bat` to install the packages and start building the files.
+3. Open the file `start.bat` to run the server. A link will be logged to the console to connect to the web server. If it fails to do so, type `ipconfig` in the terminal, and use your IPv4 address following the port number. EG `192.168.x.x:PORT`.
 
 > Default port is `80` which is a known port for web servers, that lets you connect to the server by just mentioning the ip (192.168.x.xx).
 
@@ -53,7 +64,7 @@ Must have [Node.js](https://nodejs.org/en/), download it first then follow the s
 
 ---
 
-### To Do list
+## To Do List
 
 - General
   - User authentication
