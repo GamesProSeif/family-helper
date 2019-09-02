@@ -7,14 +7,15 @@
     "semicolon": [true, "always"],
     "quotemark": [false, "always"],
     "trailing-comma": false,
-    "no-console": false,
+    "no-console": true,
     "radix": false,
     "interface-name": false,
     "object-literal-sort-keys": false,
     "curly": false,
     "no-duplicate-super": true,
     "no-boolean-literal-compare": true,
-    "ordered-imports": { "severity": "error" }
+    "ordered-imports": { "severity": "error" },
+    "no-unused-variable": true
   },
   "rulesDirectory": []
 }

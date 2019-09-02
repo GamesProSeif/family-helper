@@ -1,6 +1,6 @@
 @echo off
 echo Starting...
-call npm start
+call npm start open
 echo Script ended
 echo press any key to exit...
 pause >nul

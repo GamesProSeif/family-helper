@@ -2,10 +2,11 @@ import { Request, Response, Router, static as eStatic } from 'express';
 import * as formidableMiddleware from 'express-formidable';
 import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
+import { logger } from '../../util/logger';
 
 export const router = Router();
 
-router.use(eStatic(join(__dirname, '..', '..', '..', 'storage')));
+router.use(eStatic(join(__dirname, '..', '..', '..', 'storage/')));
 
 router.use(formidableMiddleware());
 
@@ -35,7 +36,7 @@ router.post('/', (req: Request, res: Response) => {
         file: req.files.filetoupload.name
       });
     } catch (e) {
-      console.log(e);
+      logger.error(e);
     }
   })();
 });

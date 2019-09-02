@@ -1,7 +1,12 @@
-// tslint:disable: no-var-requires
 import * as express from 'express';
-import { networkInterfaces } from 'os';
+import * as open from 'open';
 import { join } from 'path';
+import { router as filesRouter } from './routes/api/files';
+import { router as pagesRouter } from './routes/pages/share';
+import getIp from './util/getIp';
+import { logger } from './util/logger';
+
+process.title = 'Family Helper';
 
 const app = express();
 
@@ -14,10 +19,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Files API Router
-app.use('/api/files', require('./routes/api/files').router);
+app.use('/api/files', filesRouter);
 
 // Share Router
-app.use('/share', require('./routes/pages/share').router);
+app.use('/share', pagesRouter);
 
 // Share redirects
 app.get('/', (req: express.Request, res: express.Response) =>
@@ -32,24 +37,12 @@ app.get('/upload', (req: express.Request, res: express.Response) =>
 
 const PORT = process.env.PORT || 80;
 
-const interfaces = networkInterfaces();
-let ip: string | undefined;
+app.listen(PORT, () => {
+  const ipAddress = getIp();
 
-if (interfaces.Ethernet) {
-  ip = interfaces.Ethernet.filter(n => n.family === 'IPv4')[0].address;
-} else if (interfaces['Wi-Fi']) {
-  ip = interfaces['Wi-Fi'].filter(n => n.family === 'IPv4')[0].address;
-} else {
-  ip = undefined;
-}
+  ipAddress.forEach(ip => {
+    logger.info(`Network "${ip.name}": http://${ip.address}:${PORT}`);
+  });
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-
-if (ip) {
-  console.log(`Possibly hosting on ${ip}`);
-  console.log(`Full domain: http://${ip}:${PORT}/`);
-} else {
-  console.log(
-    'Couldn\'t find an ip, try doing "ipconfig" in the terminal and use the IPv4 ips there.'
-  );
-}
+  if (process.argv.slice(2).includes('open')) open(`http://localhost:${PORT}`);
+});
