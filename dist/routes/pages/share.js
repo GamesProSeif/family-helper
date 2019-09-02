@@ -32,3 +32,21 @@ exports.router.get('/upload', (req, res) => {
         page: 'Upload'
     });
 });
+
+exports.router.get('/delete', (req, res) => {
+    (async () => {
+        try {
+            let file = req.query.file;
+            if(!file) return;
+            let dfile = await path_1.join(__dirname, '..', '..', 'storage', file);
+            if(!fs_1.existsSync(dfile)) return res.send("File not found.");
+             fs_1.unlinkSync(dfile);
+             res.render('share/deletingdone.ejs', {
+                 page: 'Deleted successfully.'
+             });
+         }
+         catch (e) {
+             console.log(e);
+         }
+    })();
+});
