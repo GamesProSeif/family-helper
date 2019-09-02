@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express';
-import { existsSync, readdirSync } from 'fs';
+import { existsSync, readdirSync, unlinkSync } from 'fs';
 import { join } from 'path';
 
 export const router = Router();
@@ -34,4 +34,22 @@ router.get('/upload', (req: Request, res: Response) => {
   res.status(200).render('share/upload', {
     page: 'Upload'
   });
+});
+
+router.get('/delete', (req: Request, res: Response) => {
+  (async () => {
+      try {
+          let file = req.query.file;
+          if(!file) return;
+          let dfile = await join(__dirname, '..', '..', 'storage', file);
+          if(!existsSync(dfile)) return res.send("File not found.");
+           unlinkSync(dfile);
+           res.render('share/deletingdone.ejs', {
+               page: 'Deleted successfully.'
+           });
+       }
+       catch (e) {
+           console.log(e);
+       }
+  })();
 });
