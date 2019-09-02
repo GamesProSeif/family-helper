@@ -1,12 +1,12 @@
-import { join } from 'path';
-import { networkInterfaces } from 'os';
+// tslint:disable: no-var-requires
 import * as express from 'express';
-import { Request, Response } from 'express';
+import { networkInterfaces } from 'os';
+import { join } from 'path';
 
 const app = express();
 
 // EJS Middleware
-app.set('views', join(__dirname, 'views/'));
+app.set('views', join(__dirname, '..', 'views/'));
 app.set('view engine', 'ejs');
 
 // Body Parser Middleware
@@ -20,25 +20,25 @@ app.use('/api/files', require('./routes/api/files').router);
 app.use('/share', require('./routes/pages/share').router);
 
 // Share redirects
-app.get('/', (req: Request, res: Response) =>
+app.get('/', (req: express.Request, res: express.Response) =>
   res.status(200).redirect('/share')
 );
-app.get('/download', (req: Request, res: Response) =>
+app.get('/download', (req: express.Request, res: express.Response) =>
   res.status(200).redirect('/share/download')
 );
-app.get('/upload', (req: Request, res: Response) =>
+app.get('/upload', (req: express.Request, res: express.Response) =>
   res.status(200).redirect('/share/upload')
 );
 
 const PORT = process.env.PORT || 80;
 
-let interfaces = networkInterfaces();
+const interfaces = networkInterfaces();
 let ip: string | undefined;
 
-if (interfaces['Ethernet']) {
-  ip = interfaces['Ethernet'].filter(n => n.family == 'IPv4')[0].address;
+if (interfaces.Ethernet) {
+  ip = interfaces.Ethernet.filter(n => n.family === 'IPv4')[0].address;
 } else if (interfaces['Wi-Fi']) {
-  ip = interfaces['Wi-Fi'].filter(n => n.family == 'IPv4')[0].address;
+  ip = interfaces['Wi-Fi'].filter(n => n.family === 'IPv4')[0].address;
 } else {
   ip = undefined;
 }

@@ -1,34 +1,34 @@
-import * as express from 'express';
-import { Request, Response, Router } from 'express';
-import { existsSync, mkdirSync, createWriteStream, createReadStream } from 'fs';
-import { join } from 'path';
+import { Request, Response, Router, static as eStatic } from 'express';
 import * as formidableMiddleware from 'express-formidable';
+import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'fs';
+import { join } from 'path';
 
 export const router = Router();
 
-router.use(express.static(join(__dirname, '..', '..', 'storage')));
+router.use(eStatic(join(__dirname, '..', '..', '..', 'storage')));
 
 router.use(formidableMiddleware());
 
 router.post('/', (req: Request, res: Response) => {
   (async () => {
     try {
-      let storageFound = await existsSync(
-        join(__dirname, '..', '..', 'storage/')
+      const storageFound = await existsSync(
+        join(__dirname, '..', '..', '..', 'storage/')
       );
       if (!storageFound) {
-        await mkdirSync(join(__dirname, '..', '..', 'storage/'));
+        await mkdirSync(join(__dirname, '..', '..', '..', 'storage/'));
       }
-      let oldpath = req.files.filetoupload.path;
-      let newpath = join(
+      const oldpath = req.files.filetoupload.path;
+      const newpath = join(
         __dirname,
+        '..',
         '..',
         '..',
         'storage',
         req.files.filetoupload.name
       );
-      let writer = createWriteStream(newpath);
-      let reader = createReadStream(oldpath);
+      const writer = createWriteStream(newpath);
+      const reader = createReadStream(oldpath);
       await reader.pipe(writer);
       res.status(200).render('share/done', {
         page: 'Uploaded',

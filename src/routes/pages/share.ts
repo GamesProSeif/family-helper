@@ -13,11 +13,11 @@ router.get('/', (req: Request, res: Response) => {
 router.get('/download', (req: Request, res: Response) => {
   async function f() {
     try {
-      let storageFound = await existsSync(
-        join(__dirname, '..', '..', 'storage/')
+      const storageFound = await existsSync(
+        join(__dirname, '..', '..', '..', 'storage/')
       );
-      let files = storageFound
-        ? readdirSync(join(__dirname, '..', '..', 'storage/'))
+      const files = storageFound
+        ? readdirSync(join(__dirname, '..', '..', '..', 'storage/'))
         : [];
       res.status(200).render('share/download', {
         page: 'Download',
@@ -38,18 +38,17 @@ router.get('/upload', (req: Request, res: Response) => {
 
 router.get('/delete', (req: Request, res: Response) => {
   (async () => {
-      try {
-          let file = req.query.file;
-          if(!file) return;
-          let dfile = await join(__dirname, '..', '..', 'storage', file);
-          if(!existsSync(dfile)) return res.send("File not found.");
-           unlinkSync(dfile);
-           res.render('share/deletingdone.ejs', {
-               page: 'Deleted successfully.'
-           });
-       }
-       catch (e) {
-           console.log(e);
-       }
+    try {
+      const file = req.query.file;
+      if (!file) return;
+      const dfile = await join(__dirname, '..', '..', '..', 'storage', file);
+      if (!existsSync(dfile)) return res.send('File not found.');
+      unlinkSync(dfile);
+      res.render('share/deletingdone.ejs', {
+        page: 'Deleted successfully.'
+      });
+    } catch (e) {
+      console.log(e);
+    }
   })();
 });

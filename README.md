@@ -64,7 +64,6 @@ Must have [Node.js](https://nodejs.org/en/), download it first then follow the s
   - Configuration file (for name, port, etc...)
   - Timestamp to file upload
   - Log file of uploaders/downloaders
-  - Delete file feature
   - Fix overflow when uploaded file name is long
   - Private Share
   - Size limiting
